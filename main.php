@@ -3,6 +3,112 @@
 $fQuit = false;
 
 
+class Client {
+	protected $id;
+	protected $phone_number;
+	protected $email;
+
+	protected $clientGroups;
+
+	//Client groups
+	public function __construct() {
+	this->clientGroups = new ArrayCollection(); 
+	}
+
+	//Set and get Methods
+	public function getId() {
+	return $this->id;
+	}
+	public function setId($id) {
+	$this->id = $id;
+	}
+
+
+	public function getPhoneNumber() {
+	return $this->phone_number;
+	}
+	public function setPhoneNumber($phone_number) {
+	$this->phone_number = $phone_number;
+	}
+
+
+	public function getEmail() {
+	return $this->id;
+	}
+	public function setEmail($email) {
+	$this->id = $id;
+	}
+
+
+	public function getClientGroups() {
+	return $this->groups;
+	}
+	public function assignToClientGroup(Group $group) {
+	$this->groups[] = $group;
+	}
+
+	public function removeClientFromGroups(Group $group) {
+	$this->getGroups()->removeElement($group);
+	}
+
+
+}
+
+
+class Product {
+	protected $id;
+	protected $product_name;
+	protected $price;
+
+	protected $productGroups;
+
+	//Product groups
+	public function __construct() {
+	this->productGroups = new ArrayCollection();
+	}
+
+	//Set and get Methods
+	public function getId() {
+	return $this->id;
+	}
+	public function setId($id) {
+	$this->id = $id;
+	}
+
+
+	public function getProductName() {
+	return $this->phone_number;
+	}
+	public function setProductName($phone_number) {
+	$this->phone_number = $phone_number;
+	}
+
+
+	public function getPrice() {
+	return $this->id;
+	}
+	public function setPrice($email) {
+	$this->id = $id;
+	}
+
+
+	public function getProductGroups() {
+	return $this->groups;
+	}
+	public function assignToProductGroup(Group $group) {
+	$this->groups[] = $group;
+	}
+
+	public function removeProductFromGroups(Group $group) {
+	$this->getGroups()->removeElement($group);
+	}	
+
+}
+
+
+
+
+
 function userMenu(){
 
 }
