@@ -3,21 +3,18 @@ require __DIR__ . '/vendor/autoload.php';
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-// Create a simple "default" Doctrine ORM configuration for Annotations
-$isDevMode = true;
-$proxyDir = null;
-$cache = null;
-$useSimpleAnnotationReader = false;
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
-// or if you prefer yaml or XML
-//$config = Setup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
-//$config = Setup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
+use Doctrine\ORM\Mapping as ORM;
+
+
+$driver = new PHPDriver('/config/php/Entities.Client.php');
+$em->getConfiguration()->setMetadataDriverImpl($driver);
+
 
 $conn = array(
     'driver' => 'pdo_sqlite',
     'path' => __DIR__ . '/db.sqlite',
 );
-$em = EntityManager::create($conn, $config);
+
 
 $fQuit = false;
 
@@ -28,6 +25,8 @@ class clientGroup {
 class productGroup {
 	protected $productGroups = array();
 }
+
+
 
 class Client {
 	protected $id;
@@ -156,25 +155,25 @@ while(!$fQuit){
 	$client1->setPhoneNumber("888-88-82");
 	$client1->setEmail("hello@mail.com");
 
-	$client2 = new Client();
-	$client2->setId("12");
-	$client2->setPhoneNumber("883-83-82");
-	$client2->setEmail("hellkfo@mail.com");
-
-	$client3 = new Client();
-	$client3->setId("10");
-	$client3->setPhoneNumber("881-28-82");
-	$client3->setEmail("hellnoo@mail.com");
-
 	$client1->assignToClientGroup($clientGroup1);
 	$em->persist($client1);
 	$em->flush();
 	echo "Client1 created with ID".$client1->getId()."\r\n";
 
+	$client2 = new Client();
+	$client2->setId("12");
+	$client2->setPhoneNumber("883-83-82");
+	$client2->setEmail("hellkfo@mail.com");
+
 	$client2->assignToClientGroup($clientGroup);
 	$em->persist($client2);
 	$em->flush();
 	echo "Client2 created with ID".$client1->getId()."\r\n";
+
+	$client3 = new Client();
+	$client3->setId("10");
+	$client3->setPhoneNumber("881-28-82");
+	$client3->setEmail("hellnoo@mail.com");
 
 	$client3->assignToClientGroup($clientGroup);
 	$em->persist($client3);
