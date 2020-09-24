@@ -17,9 +17,7 @@ $conn = array(
     'driver' => 'pdo_sqlite',
     'path' => __DIR__ . '/db.sqlite',
 );
-
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
+$em = EntityManager::create($conn, $config);
 
 $fQuit = false;
 
