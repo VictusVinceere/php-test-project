@@ -1,7 +1,7 @@
 <?php 
 require __DIR__ . '/vendor/autoload.php';
-use App\Entity\Client;
-use App\Entity\Purchase;
+use App\Entity\Client;//OOP part navigate by clicking on Client class
+use App\Entity\Purchase;//OOP part navigate by clicking on Purchase class
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Driver\Connection;
 
